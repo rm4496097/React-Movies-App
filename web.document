@@ -1,0 +1,13 @@
+# ========installing============
+npm create vite@latest
+√ Project name: ... react-movies-app
+√ Select a framework: » React
+√ Select a variant: » JavaScript
+Done. Now run:
+  cd react-movies-app
+  npm install
+  npm run dev
+
+  # =======api =============
+  https://www.themoviedb.org/settings/api  # here create api token 
+  https://developer.themoviedb.org/reference/guest-session-rated-movies
