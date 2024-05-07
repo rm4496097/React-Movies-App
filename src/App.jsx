@@ -1,10 +1,11 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { fetchDataFromApi } from './utils/api';
 import { useSelector, useDispatch } from 'react-redux';
-import { getApiConfigration, getGenres } from './store/homeSlice';
+import { getApiConfiguration , getGenres } from './store/homeSlice';
 
 
 import Header from './components/header/Header';
@@ -14,7 +15,7 @@ import PageNotFound from './pages/404/PageNotFound';
 import Explore from './pages/explore/Explore';
 import SearchResult from './pages/searchResults/SearchResult';
 import Details from './pages/details/Details';
-
+import { Button } from 'react-bootstrap';
 
 function App() {
   const dispatch = useDispatch();
@@ -29,7 +30,8 @@ function App() {
   const fetchData = () => {
     fetchDataFromApi('movie/now_playing')
       .then((res) => {
-        dispatch(getApiConfigration(res))
+        dispatch(getApiConfiguration(res))
+        console.log(res.results)
         setMovies(res.results);
       })
       .catch((error) => {
@@ -47,7 +49,7 @@ function App() {
         <Route path="/explore/:mediaType" element={<Explore />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }

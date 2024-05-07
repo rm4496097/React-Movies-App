@@ -1,12 +1,11 @@
-import React from 'react';
-import './style.scss'
+import HeroBanner from '../../pages/home/heroBanner/HeroBanner';
+import './style.scss';
 
 function Header() {
-    return (
-        <div>
-            <h1>header</h1>
-        </div>
-    );
+  
+  return (
+    <HeroBanner />
+  )
 }
 
 export default Header;
