@@ -24,15 +24,22 @@ function App() {
   console.log(url)
 
   useEffect(() => {
-    fetchData();
+    fetchApiConfiguration();
   }, []);
 
-  const fetchData = () => {
-    fetchDataFromApi('movie/now_playing')
+  const fetchApiConfiguration = () => {
+    fetchDataFromApi('/configuration')
       .then((res) => {
-        dispatch(getApiConfiguration(res))
-        console.log(res.results)
-        setMovies(res.results);
+        const url = {
+          backdrop:res.images.secure_base_url + "original",
+          poster:res.images.secure_base_url + "original",
+          profile:res.images.secure_base_url + "original",
+        }
+        console.log("//////////////////",url);
+
+        dispatch(getApiConfiguration(url))
+        console.log('--------',res.images.base_url)
+        setMovies(res);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
